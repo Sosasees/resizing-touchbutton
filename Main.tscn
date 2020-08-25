@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://TouchButton.tscn" type="PackedScene" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+
+func _process(_delta):
+	if Input.is_action_pressed(\"ui_left\"):
+		$\".\".modulate = Color(0,0.5,1)
+	elif Input.is_action_pressed(\"ui_right\"):
+		$\".\".modulate = Color(1,0.5,0)
+	else:
+		$\".\".modulate = Color(1,1,1)
+"
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WARNING" type="Label" parent="VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 128 )
+text = "WARNING!
+Rapid Flashing Lights could be deadly for epileptics.
+They only come if you change the Inputs too fast."
+align = 1
+valign = 1
+
+[node name="ColorChangingRect" type="ColorRect" parent="VBoxContainer"]
+margin_top = 132.0
+margin_right = 1024.0
+margin_bottom = 296.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TouchButtons" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 300.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 0, 300 )
+
+[node name="ui_left" parent="VBoxContainer/TouchButtons" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 510.0
+margin_bottom = 300.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+
+[node name="ui_right" parent="VBoxContainer/TouchButtons" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 300.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+customAction = "ui_right"
