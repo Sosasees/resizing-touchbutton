@@ -1,21 +1,3 @@
-## Update: This repository is outdated
-
-It's a really old solution which is absurdly complex compared to my new solution of simply using a _Button_ node instead.
-
-To make the _Button_ behave like a 🎮Gamepad button, it should have this script with _on_button_down_ and _on_button_up_ signals for simulating the button press:
-
-```
-    extends Button
-    
-    func _on_button_down():
-        Input.action_press("jump"); #Replace "jump" with your desired action
-        
-    func _on_button_up():
-        Input.action_release("jump"); #Replace "jump" with your desired action
-```
-
----
-
 # Auto-scaling TouchScreenButton Demo for Godot
 
 ![Main Screenshot of the Game Window, showing both TouchScreenButtons as a Light Blue Rectangle. If pressed, they change the color of the White Rectangle above.](.readme-assets/main-screenshot.png)
