@@ -1,47 +1,59 @@
 [gd_scene load_steps=3 format=2]
 
 [sub_resource type="GDScript" id=1]
-script/source = "# This script is MIT-licensed # https://mit-license.org/ # ©2017-2020 Juan Linietski, Ariel Manzur & Godot Contributors
-# Code from: https://github.com/sosasees/scaling-touchbutton-gd
+script/source = "# This script is MIT-licensed:
+	# Copyright © 2021 Godot Contributors
+	#
+	# Permission is hereby granted, free of charge, to any person obtaining
+	# a copy of this software and associated documentation files
+	# (the “Software”), to deal in the Software without restriction,
+	# including without limitation the rights to use, copy, modify, merge,
+	# publish, distribute, sublicense, and/or sell copies of the Software,
+	# and to permit persons to whom the Software is furnished to do so,
+	# subject to the following conditions:
+	#
+	# The above copyright notice and this permission notice shall be included
+	# in all copies or substantial portions of the Software.
+	#
+	# THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,
+	# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+	# IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+	# FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
+	# AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
+	# OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+	# OR OTHER DEALINGS IN THE SOFTWARE.
+# Code from: # https://github.com/Sosasees/resizing-touchbutton
 extends Control
 
-export (String) var customAction = \"ui_left\"
-
-
-func _ready():
-	$\"TouchScreenButton\".action = customAction
-
-
 func _process(_delta):
-	# Dynamically resizes the Touch Buttons to the right size
-	# if ,,HowManyTouchButtons\" is set correctly:
+	# Dynamically resizes the TouchScreenButtons
+	# to the size of the parent Control node
 	$\"TouchScreenButton\".shape.extents.x = $\".\".rect_size.x * 0.5
 	$\"TouchScreenButton\".shape.extents.y = $\".\".rect_size.y * 0.5
-	# This can safely be moved to the _ready() function
-	# if the TouchScreenButtons will Only be displayed on Phones,
-	# and that the app forces to be used in a specific screen orientation,
-	# and that it can't be displayed in Split-Screen or Windowed mode
-	# (Because these are the right conditions
-	# for never needing to resize the Buttons during Runtime) )
+	# This can safely be moved to the _ready() function if you make sure that
+	# the screen never gets resized during runtime.
+	# ( For example: If the game is played on a phone,
+	# and the game app can only be used in a specific screen orientation,
+	# and that it can't be displayed in Split-Screen or Windowed mode )
 
 
-# fun_fact(0):
+# fact 1:
 	# Did you know that TouchScreenButtons can exceed
 	# the Boundaries of any Viewport,
 	# and even creep into the Letterboxing and Pillarboxing of the game?)
-	#
+	# 
 	# This was the problem I solved with this project,
 	# but this property can also be abused
 	# if you only have One Row of TouchButtons,
 	# by letting them Scale Up Ridiculously Large (9999) into the Y-Axis,
 	# but still constraining them in the X-Axis.
 
-# fun_fact(1):
+# fact 2:
 	# I don't know why, but the Size Constraining only works
-	# if I add a dividing operation
-	# after setting the TouchScreenButton's Shape Extents.
-	# So I did, but I framed it as a multiplying operation,
-	# because Computers can multiply much faster than they can divide.
+	# if dividing by 2 after setting the TouchScreenButton's Shape Extents.
+	# So I did, but I framed it as a multiplication instead
+	# because computers can multiply much faster than they can divide.
 "
 
 [sub_resource type="RectangleShape2D" id=2]

@@ -28,7 +28,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="WARNING" type="Label" parent="VBoxContainer"]
+[node name="EpilepsyWarning" type="Label" parent="VBoxContainer"]
 margin_right = 1024.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 0, 128 )
@@ -63,6 +63,9 @@ margin_bottom = 300.0
 grow_horizontal = 0
 size_flags_horizontal = 3
 
+[node name="TouchScreenButton" parent="VBoxContainer/TouchButtons/ui_left" index="0"]
+action = "ui_left"
+
 [node name="ui_right" parent="VBoxContainer/TouchButtons" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -71,4 +74,10 @@ margin_right = 1024.0
 margin_bottom = 300.0
 grow_horizontal = 0
 size_flags_horizontal = 3
-customAction = "ui_right"
+
+[node name="TouchScreenButton" parent="VBoxContainer/TouchButtons/ui_right" index="0"]
+action = "ui_right"
+
+[editable path="VBoxContainer/TouchButtons/ui_left"]
+
+[editable path="VBoxContainer/TouchButtons/ui_right"]
