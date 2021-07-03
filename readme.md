@@ -13,6 +13,7 @@ and let the script on that _Control_ node resize the _TouchScreenButton_ accordi
 
 ![](.readme-assets/tb-hierarchy.png)
  
+```
 extends Control
 
 	func _process(_delta):
@@ -43,4 +44,5 @@ extends Control
 		# if dividing by 2 after setting the TouchScreenButton's Shape Extents.
 		# So I did, but I framed it as a multiplication instead
 		# because computers can multiply much faster than they can divide.
+```
 

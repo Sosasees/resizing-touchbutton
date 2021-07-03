@@ -23,7 +23,7 @@ script/source = "# This script is MIT-licensed:
 	# AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
 	# OR IN CONNECTION WITH THE SOFTWARE OR THE USE
 	# OR OTHER DEALINGS IN THE SOFTWARE.
-# Code from: # https://github.com/Sosasees/resizing-touchbutton
+# Code from: https://github.com/Sosasees/resizing-touchbutton-solution-for-godot
 extends Control
 
 func _process(_delta):
